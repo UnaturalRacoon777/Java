@@ -2,7 +2,7 @@
  *
  * @author Victor Ojeda
  * @version 1.0
- * @since 9/9/2022
+ * @since 9/30/2022
  */
 
 
@@ -14,124 +14,160 @@ public class Main
     public static void main(String[] args)
     {
         Scanner input = new Scanner(System.in);
-        
-        System.out.println("\n\nWhat size do you want your Arrays to be?\n");
-        System.out.print("ENTER : ");
 
-        int SIZE = input.nextInt();
         System.out.println();
 
-        int[] A = new int[SIZE];
-        int[] B = new int[SIZE];
+        int[] log10 = new int[10];
+        int[] sqr10 = new int[10];
 
-        // Generate two arrays in ascending order
-        for (int i = 0; i < SIZE; i++)
+        int[] log100 = new int[100];
+        int[] sqr100 = new int[100];
+
+        int[] log1000 = new int[1000];
+        int[] sqr1000 = new int[1000];
+
+        int[] log10000 = new int[10000];
+        int[] sqr10000 = new int[10000];
+
+        int[] log100000 = new int[100000];
+        int[] sqr100000 = new int[100000];
+
+        for (int i = 0; i < 10; i++)
         {
-            if (i > 0)
-            {
-                A[i] = A[i-1] + (int)(1 + (Math.random() * 11));
-                B[i] = B[i-1] + (int)(1 + (Math.random() * 11));
-            }
-            else
-            {
-                A[i] = A[i] + (int)(1 + (Math.random() * 11));
-                B[i] = B[i] + (int)(1 + (Math.random() * 11));
-            }
+            log10[i] = (int)(1 + (Math.random() * 100000));
+            sqr10[i] = (int)(1 + (Math.random() * 100000));
         }
 
-        System.out.println(Arrays.toString(A) + "\n\n" + Arrays.toString(B));
-        System.out.println();
-        
-        descending(A, B);
+        for (int i = 0; i < 100; i++)
+        {
+            log100[i] = (int)(1 + (Math.random() * 100000));
+            sqr100[i] = (int)(1 + (Math.random() * 100000));
+        }
+
+        for (int i = 0; i < 1000; i++)
+        {
+            log1000[i] = (int)(1 + (Math.random() * 100000));
+            sqr1000[i] = (int)(1 + (Math.random() * 100000));
+        }
+
+        for (int i = 0; i < 10000; i++)
+        {
+            log100000[i] = (int)(1 + (Math.random() * 100000));
+            sqr100000[i] = (int)(1 + (Math.random() * 100000));
+        }
+
+        for (int i = 0; i < 100000; i++)
+        {
+            log100000[i] = (int)(1 + (Math.random() * 100000));
+            sqr100000[i] = (int)(1 + (Math.random() * 100000));
+        }
+        time10(log10, sqr10);
+        System.out.println("--------------------------------------------------------");
+        time100(log100, sqr100);
+        System.out.println("--------------------------------------------------------");
+        time1000(log1000, sqr1000);
+        System.out.println("--------------------------------------------------------");
+        time10000(log10000, sqr10000);
+        System.out.println("--------------------------------------------------------");
+        time100000(log100000, sqr100000);
+
     }
 
-    public static void descending(int[] A, int[] B)
+    public static void time10(int[] A, int[] B)
     {
-        int[] AB = new int[A.length * 2];
+        System.out.println("\nSorting 10 elements\n");
 
-        int incrementor = 0;
+        long startTime = System.nanoTime();
+        Arrays.sort(A);
+        long stopTime = System.nanoTime();
+        System.out.println("Array Sort took : " + (stopTime - startTime) + " millis\n");
 
-        for (int i = A.length - 1; i >= 0; i--)
+
+        startTime = System.nanoTime();
+        bubbleSort(B);
+        stopTime = System.nanoTime();
+        System.out.println("Bubble Sort took : " + (stopTime - startTime) + " millis\n");
+    }
+
+    public static void time100(int[] A, int[] B)
+    {
+        System.out.println("\nSorting 100 elements\n");
+
+        long startTime = System.nanoTime();
+        Arrays.sort(A);
+        long stopTime = System.nanoTime();
+        System.out.println("Array Sort took : " + (stopTime - startTime) + " millis\n");
+
+
+        startTime = System.nanoTime();
+        bubbleSort(B);
+        stopTime = System.nanoTime();
+        System.out.println("\nBubble Sort took : " + (stopTime - startTime) + " millis\n");
+    }
+
+    public static void time1000(int[] A, int[] B)
+    {
+        System.out.println("\nSorting 1000 elements\n");
+
+        long startTime = System.nanoTime();
+        Arrays.sort(A);
+        long stopTime = System.nanoTime();
+        System.out.println("Array Sort took : " + (stopTime - startTime) + " millis\n");
+
+
+        startTime = System.nanoTime();
+        bubbleSort(B);
+        stopTime = System.nanoTime();
+        System.out.println("\nBubble Sort took : " + (stopTime - startTime) + " millis\n");
+    }
+
+    public static void time10000(int[] A, int[] B)
+    {
+        System.out.println("\nSorting 10000 elements\n");
+
+        long startTime = System.nanoTime();
+        Arrays.sort(A);
+        long stopTime = System.nanoTime();
+        System.out.println("Array Sort took : " + (stopTime - startTime) + " millis\n");
+
+
+        startTime = System.nanoTime();
+        bubbleSort(B);
+        stopTime = System.nanoTime();
+        System.out.println("\nBubble Sort took : " + (stopTime - startTime) + " millis\n");
+    }
+
+    public static void time100000(int[] A, int[] B)
+    {
+        System.out.println("\nSorting 100,000 elements\n");
+
+        long startTime = System.nanoTime();
+        Arrays.sort(A);
+        long stopTime = System.nanoTime();
+        System.out.println("Array Sort took : " + (stopTime - startTime) + " millis\n");
+
+
+        startTime = System.nanoTime();
+        bubbleSort(B);
+        stopTime = System.nanoTime();
+        System.out.println("\nBubble Sort took : " + (stopTime - startTime) + " millis");
+    }
+
+    public static void bubbleSort(int A[])
+    {
+         
+        for (int i = 0; i < A.length; i++)
         {
-            if (i == A.length - 1) // Set the initial elements in AB to start comparing previous element with the next position
+            for (int j = i+1; j < A.length; j++)
             {
-                if (A[i] > B[i])
+                if (A[j] < A[i])
                 {
-                    AB[0] = A[i];
-                    incrementor++;
-                    AB[incrementor] = B[i];
-                    incrementor++;
-                }
-                else
-                {
-                    AB[0] = B[i];
-                    incrementor++;
-                    AB[incrementor] = A[i];
-                    incrementor++;
-                }
-            }
-            //Compare the two arrays, whichever is bigger, compare that with the previous element of AB, switch elements if the order is not correct
-            // then move to the next position of AB array to add the next possible element from A or B, whichever is bigger
-            else
-            {
-                if (A[i] > B[i])
-                {
-                    int previousIndex = incrementor - 1;
-                    if (A[i] > AB[previousIndex])
-                    {
-                        int temp = AB[previousIndex];
-                        AB[previousIndex] = A[i];
-                        AB[incrementor] = temp;
-                        incrementor++;
-
-                        AB[incrementor] = B[i];
-                        incrementor++;
-                    }
-                    else
-                    {
-                        AB[incrementor] = A[i];
-                        incrementor++;
-
-                        AB[incrementor] = B[i];
-                        incrementor++;
-
-                    }
-                }
-                else if (B[i] > A[i])
-                {
-                    int previousIndex = incrementor - 1;
-                    if (B[i] > AB[previousIndex])
-                    {
-                        int temp = AB[previousIndex];
-                        AB[previousIndex] = B[i];
-                        AB[incrementor] = temp;
-                        incrementor++;
-
-                        AB[incrementor] = A[i];
-                        incrementor++;
-                    }
-                    else
-                    {
-                        AB[incrementor] = B[i];
-                        incrementor++;
-
-                        AB[incrementor] = A[i];
-                        incrementor++;
-                    }
-                }
-
-                else
-                {
-                    AB[incrementor] = A[i];
-                    incrementor++;
-
-                    AB[incrementor] = B[i];
-                    incrementor++;
+                    int temp = A[j];
+                    A[j] = A[i];
+                    A[i] = temp;
                 }
             }
         }
-
-        System.out.println(Arrays.toString(AB));
     }
 
 }
